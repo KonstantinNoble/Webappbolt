@@ -86,7 +86,7 @@ const HomePage = () => {
               Join thousands of professionals advancing their careers.
             </p>
             
-            {!user && (
+            {!user ? (
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
                 <Link 
                   to="/register"
@@ -101,6 +101,16 @@ const HomePage = () => {
                   className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                 >
                   View Demo
+                </Link>
+              </div>
+            ) : (
+              <div className="flex justify-center mb-16">
+                <Link 
+                  to="/dashboard"
+                  className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
+                >
+                  <span>Go to Dashboard</span>
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
             )}
@@ -557,13 +567,140 @@ const HomePage = () => {
                 className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Go to Dashboard</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
 
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="relative p-2 rounded-lg bg-blue-600">
+                  <div className="relative w-8 h-8">
+                    <svg viewBox="0 0 100 100" className="w-full h-full">
+                      <circle cx="40" cy="40" r="25" fill="none" stroke="white" strokeWidth="4"/>
+                      <circle cx="40" cy="40" r="15" fill="none" stroke="white" strokeWidth="3"/>
+                      <line x1="60" y1="60" x2="85" y2="85" stroke="white" strokeWidth="6" strokeLinecap="round"/>
+                      <circle cx="40" cy="40" r="2" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+                <span className="text-2xl font-bold">QuotaSkill</span>
+              </div>
+              <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+                Empowering professionals worldwide with AI-powered learning solutions. 
+                Master new skills, advance your career, and achieve your goals.
+              </p>
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.instagram.com/quota_skill/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition-colors"
+                  aria-label="Follow QuotaSkill on Instagram"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://x.com/Quoatskill"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition-colors"
+                  aria-label="Follow QuotaSkill on X (Twitter)"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
 
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6">Platform</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link to="/learning-plans" className="text-gray-400 hover:text-white transition-colors">
+                    Learning Plans
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/quiz" className="text-gray-400 hover:text-white transition-colors">
+                    AI Quizzes
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/learning-hub" className="text-gray-400 hover:text-white transition-colors">
+                    Learning Hub
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+                    Dashboard
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
+            {/* Legal */}
+            <div>
+              <h4 className="text-lg font-semibold mb-6">Legal</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link to="/impressum" className="text-gray-400 hover:text-white transition-colors">
+                    Imprint
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/datenschutz" className="text-gray-400 hover:text-white transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/cookie-richtlinie" className="text-gray-400 hover:text-white transition-colors">
+                    Cookie Policy
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.displayPreferenceModal();
+                    }}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Cookie Preferences
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
 
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 mb-4 md:mb-0">
+              © 2025 QuotaSkill. All rights reserved.
+            </p>
+            <p className="text-gray-500 text-sm">
+              Empowering learning with artificial intelligence
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
-      
-
+export default HomePage;
 
 
 
