@@ -665,7 +665,7 @@ const HomePage = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/cookie-richtlinie" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/cookiepolicy" className="text-gray-400 hover:text-white transition-colors">
                     Cookie Policy
                   </Link>
                 </li>
