@@ -482,7 +482,7 @@ const Navbar = () => {
 
 
 
-            <h2 className="text-xl font-bold text-white">Navigation</h2>
+            <h2 className="text-xl font-bold text-white"></h2>
 
 
 
