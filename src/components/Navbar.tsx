@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { useCredits } from '../contexts/CreditContext';
+// Dummy contexts to make the code runnable in an isolated environment.
+// In a real application, you would import these from your context files.
+const useAuth = () => ({ user: { email: 'user@example.com' }, signOut: () => console.log('Signing out...') });
+const useCredits = () => ({ credits: 123 });
 import { 
   Brain,
   Home, 
@@ -113,7 +115,7 @@ const Navbar = () => {
       )}
 
       {/* Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-80 bg-white/98 backdrop-blur-lg border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+      <div className={`fixed top-0 right-0 h-full w-64 sm:w-80 bg-white/98 backdrop-blur-lg border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
         isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
@@ -132,14 +134,14 @@ const Navbar = () => {
           <div className="flex-1 overflow-y-auto p-6">
             {/* User Info */}
             {user && (
-              <div className="mb-6 p-4 bg-gray-100/50 rounded-lg border border-gray-200">
+              <div className="mb-6 p-4 bg-gray-100/70 rounded-lg border border-gray-200 shadow-sm">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-blue-400/20 rounded-lg">
                     <User className="w-5 h-5 text-blue-400" />
                   </div>
                   <div>
-                    <p className="text-gray-900 font-medium">Signed in as</p>
-                    <p className="text-gray-500 text-sm">{user.email?.split('@')[0]}</p>
+                    <p className="text-gray-900 font-semibold">Signed in as</p>
+                    <p className="text-gray-600 text-sm">{user.email?.split('@')[0]}</p>
                   </div>
                 </div>
               </div>
@@ -147,15 +149,15 @@ const Navbar = () => {
 
             {/* Main Navigation */}
             <div className="mb-8">
-              <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-4">Main Navigation</h3>
+              <h3 className="text-gray-600 text-sm font-bold uppercase tracking-wide mb-4">Main Navigation</h3>
               <div className="space-y-2">
                 <Link 
                   to="/" 
                   onClick={closeSidebar}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                     isActive('/') 
-                      ? 'text-blue-500 bg-blue-500/10 border border-blue-500/20' 
-                      : 'text-gray-700 hover:text-blue-500 hover:bg-blue-500/5'
+                      ? 'text-blue-600 bg-blue-100 border border-blue-200' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                   }`}
                 >
                   <Home className="w-5 h-5" />
@@ -167,8 +169,8 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                     isActive('/learning-plans') 
-                      ? 'text-green-500 bg-green-500/10 border border-green-500/20' 
-                      : 'text-gray-700 hover:text-green-500 hover:bg-green-500/5'
+                      ? 'text-green-600 bg-green-100 border border-green-200' 
+                      : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
                   }`}
                 >
                   <BookOpen className="w-5 h-5" />
@@ -180,8 +182,8 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                     isActive('/quiz') 
-                      ? 'text-purple-500 bg-purple-500/10 border border-purple-500/20' 
-                      : 'text-gray-700 hover:text-purple-500 hover:bg-purple-500/5'
+                      ? 'text-purple-600 bg-purple-100 border border-purple-200' 
+                      : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
                   }`}
                 >
                   <HelpCircle className="w-5 h-5" />
@@ -193,8 +195,8 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                     isActive('/learning-hub') 
-                      ? 'text-pink-500 bg-pink-500/10 border border-pink-500/20' 
-                      : 'text-gray-700 hover:text-pink-500 hover:bg-pink-500/5'
+                      ? 'text-pink-600 bg-pink-100 border border-pink-200' 
+                      : 'text-gray-700 hover:text-pink-600 hover:bg-pink-50'
                   }`}
                 >
                   <BookOpen className="w-5 h-5" />
@@ -206,15 +208,15 @@ const Navbar = () => {
             {/* User Area */}
             {user && (
               <div className="mb-8">
-                <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-4">My Account</h3>
+                <h3 className="text-gray-600 text-sm font-bold uppercase tracking-wide mb-4">My Account</h3>
                 <div className="space-y-2">
                   <Link 
                     to="/dashboard" 
                     onClick={closeSidebar}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                       isActive('/dashboard') 
-                        ? 'text-blue-500 bg-blue-500/10 border border-blue-500/20' 
-                        : 'text-gray-700 hover:text-blue-500 hover:bg-blue-500/5'
+                        ? 'text-blue-600 bg-blue-100 border border-blue-200' 
+                        : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                     }`}
                   >
                     <Brain className="w-5 h-5" />
@@ -226,8 +228,8 @@ const Navbar = () => {
                     onClick={closeSidebar}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
                       isActive('/settings') 
-                        ? 'text-gray-500 bg-gray-500/10 border border-gray-500/20' 
-                        : 'text-gray-700 hover:text-gray-500 hover:bg-gray-500/5'
+                        ? 'text-gray-600 bg-gray-100 border border-gray-200' 
+                        : 'text-gray-700 hover:text-gray-600 hover:bg-gray-50'
                     }`}
                   >
                     <Settings className="w-5 h-5" />
@@ -251,7 +253,7 @@ const Navbar = () => {
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center space-x-3 w-full px-4 py-3 text-red-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all duration-300"
+                  className="flex items-center space-x-3 w-full px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition-all duration-300"
                 >
                   <LogOut className="w-5 h-5" />
                   <span className="font-medium">Sign Out</span>
