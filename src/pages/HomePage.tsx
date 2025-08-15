@@ -655,12 +655,12 @@ const HomePage = () => {
               <h4 className="text-lg font-semibold mb-6">Legal</h4>
               <ul className="space-y-4">
                 <li>
-                  <Link to="/impressum" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/imprint" className="text-gray-400 hover:text-white transition-colors">
                     Imprint
                   </Link>
                 </li>
                 <li>
-                  <Link to="/datenschutz" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/privacypolicy" className="text-gray-400 hover:text-white transition-colors">
                     Privacy Policy
                   </Link>
                 </li>
