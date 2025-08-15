@@ -88,7 +88,7 @@ function App() {
                   path="/settings" 
                   element={user ? <SettingsPage /> : <Navigate to="/login" />} 
                 />
-                <Route path="/cookie-richtlinie" element={<CookiePolicyPage />} />
+                <Route path="/cookiepolicy" element={<CookiePolicyPage />} />
                 <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
                 <Route path="/Impressum" element={<ImprintPage />} />
                 
