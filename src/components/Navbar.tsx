@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// Dummy contexts to make the code runnable in an isolated environment.
-// In a real application, you would import these from your context files.
+// Dummy-Kontexte, um den Code in einer isolierten Umgebung lauffähig zu machen.
+// In einer echten Anwendung würden diese aus den entsprechenden Kontext-Dateien importiert.
 const useAuth = () => ({ user: { email: 'user@example.com' }, signOut: () => console.log('Signing out...') });
-const useCredits = () => ({ credits: 123 });
+// Korrigierter Dummy-Kontext, der einen Standardwert von 0 zurückgibt.
+const useCredits = () => ({ credits: 0 });
 import { 
   Brain,
   Home, 
@@ -285,3 +286,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
