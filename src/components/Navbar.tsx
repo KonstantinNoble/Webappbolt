@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import { useAuth } from '../contexts/AuthContext'; // Die Imports wurden auskommentiert, da sie nicht aufgelöst werden konnten
-// import { useCredits } from '../contexts/CreditContext'; // Die Imports wurden auskommentiert, da sie nicht aufgelöst werden konnten
+// Die Context-Dateien wurden aktiviert.
+import { useAuth } from '../contexts/AuthContext';
+import { useCredits } from '../contexts/CreditContext';
 import { 
   Brain,
   Home, 
@@ -20,23 +21,22 @@ import {
 } from 'lucide-react';
 
 const Navbar = () => {
-  // Simuliere die Daten, da die Context-Dateien nicht importiert werden können.
-  // Setze user auf null, um den abgemeldeten Zustand zu sehen, oder auf ein Objekt, um den angemeldeten Zustand zu sehen.
-  const user = { email: 'user@example.com' }; // oder null, um den angemeldeten Zustand zu sehen
-   // Korrekte Credits, wie vom Benutzer angegeben
-  
-  // Eine Mock-SignOut-Funktion
-  const signOut = async () => {
-      console.log("Signing out...");
-      // In einer echten App würde dies die Benutzersitzung löschen.
-      // Für diesen Mock können wir die 'user'-Konstante nicht direkt ändern,
-      // aber wir simulieren die Aktion.
-  };
+  // Use the actual hooks to get user and credit data
+  const { user, signOut } = useAuth();
+  const { credits, fetchCredits } = useCredits();
 
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
+
+  // Fetch credits when the user is available
+  useEffect(() => {
+    if (user) {
+      fetchCredits();
+    }
+  }, [user, fetchCredits]);
+
 
   const handleSignOut = async () => {
     try {
@@ -75,7 +75,7 @@ const Navbar = () => {
     }
   ];
 
-  // Zeige den Dashboard-Link nur für authentifizierte Benutzer an
+  // Show the Dashboard link only for authenticated users
   if (user) {
     navigationLinks.push({
       name: 'Dashboard',
@@ -118,7 +118,7 @@ const Navbar = () => {
                 </Link>
               ))}
               
-              {/* Zusätzliche Links für nicht authentifizierte Benutzer */}
+              {/* Additional links for unauthenticated users */}
               {!user && (
                 <>
                   <a href="#pricing" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
@@ -131,9 +131,9 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Bedienelemente auf der rechten Seite */}
+            {/* Right-side controls */}
             <div className="flex items-center space-x-4">
-              {/* Credits-Anzeige */}
+              {/* Credits display */}
               {user && (
                 <div className="flex items-center space-x-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <Coins className="w-4 h-4 text-yellow-600" />
@@ -141,7 +141,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Desktop-Authentifizierungs-Buttons */}
+              {/* Desktop authentication buttons */}
               {!user && (
                 <div className="hidden md:flex items-center space-x-4">
                   <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
@@ -156,7 +156,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Schnellaktion für authentifizierte Benutzer */}
+              {/* Quick action for authenticated users */}
               {user && (
                 <Link 
                   to="/dashboard"
@@ -166,7 +166,7 @@ const Navbar = () => {
                 </Link>
               )}
 
-              {/* Menü-Button */}
+              {/* Menu button */}
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg transition-all duration-300 font-medium"
@@ -179,7 +179,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Seitenleisten-Overlay */}
+      {/* Sidebar overlay */}
       {isSidebarOpen && (
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" 
@@ -187,12 +187,12 @@ const Navbar = () => {
         />
       )}
 
-      {/* Verbesserte Seitenleiste */}
+      {/* Improved sidebar */}
       <div 
         className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="p-6 h-full flex flex-col">
-          {/* Seitenleisten-Kopfzeile */}
+          {/* Sidebar header */}
           <div className="flex justify-between items-center pb-4 border-b border-gray-200">
             <Link to="/" onClick={closeSidebar}>
               <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
@@ -202,7 +202,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Seitenleisten-Navigation */}
+          {/* Sidebar navigation */}
           <div className="flex-1 mt-6 space-y-2">
             {navigationLinks.map((link) => (
               <Link 
@@ -224,7 +224,7 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* Zusätzliche Links für nicht authentifizierte Benutzer */}
+            {/* Additional links for unauthenticated users */}
             {!user && (
               <>
                 <a 
@@ -246,7 +246,7 @@ const Navbar = () => {
               </>
             )}
 
-            {/* Benutzerprofilbereich, falls angemeldet */}
+            {/* User profile section if logged in */}
             {user && (
               <div className="pt-6 mt-6 border-t border-gray-200">
                 <div className="flex items-center space-x-3 mb-4">
@@ -269,7 +269,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Seitenleisten-Fußzeile */}
+          {/* Sidebar footer */}
           <div className="mt-auto pt-6 border-t border-gray-200">
             {user ? (
               <div className="space-y-3">
