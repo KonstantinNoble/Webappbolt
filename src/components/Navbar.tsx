@@ -32,7 +32,8 @@ const Navbar = () => {
 
   // Fetch credits when the user is available
   useEffect(() => {
-    if (user) {
+    // Check if fetchCredits exists before calling it
+    if (user && fetchCredits) {
       fetchCredits();
     }
   }, [user, fetchCredits]);
