@@ -53,7 +53,7 @@ const Navbar = () => {
                   </svg>
                 </div>
               </div>
-              <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
+              <span className="text-2xl font-bold text-gray-900"></span>
             </Link>
 
             <div className="hidden lg:flex items-center space-x-8">
@@ -129,7 +129,7 @@ const Navbar = () => {
       <div className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-            <h2 className="text-xl font-bold text-gray-900">Navigation</h2>
+            <h2 className="text-xl font-bold text-gray-900"></h2>
             <button
               onClick={closeSidebar}
               className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-200 rounded-lg transition-all duration-300"
