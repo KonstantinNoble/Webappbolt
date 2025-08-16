@@ -114,29 +114,11 @@ const Navbar = () => {
               <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
             </Link>
 
-            {/* Desktop-Navigationslinks */}
+            {/* Desktop-Navigationslinks entfernt, durch einen Homepage-Button ersetzt */}
             <div className="hidden md:flex items-center space-x-8">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="text-gray-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              
-              {/* Additional links for unauthenticated users */}
-              {!user && (
-                <>
-                  <a href="#pricing" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                    Pricing
-                  </a>
-                  <a href="#about" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                    About
-                  </a>
-                </>
-              )}
+              <Link to="/" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                Homepage
+              </Link>
             </div>
 
             {/* Right-side controls */}
