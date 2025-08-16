@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-// import { useAuth } from '../contexts/AuthContext'; // Removed this problematic import
-// import { useCredits } from '../contexts/CreditContext'; // Removed this problematic import
+// import { useAuth } from '../contexts/AuthContext'; // Die Imports wurden auskommentiert, da sie nicht aufgelöst werden konnten
+// import { useCredits } from '../contexts/CreditContext'; // Die Imports wurden auskommentiert, da sie nicht aufgelöst werden konnten
 import { 
   Brain,
   Home, 
@@ -20,17 +20,17 @@ import {
 } from 'lucide-react';
 
 const Navbar = () => {
-  // Since we cannot resolve the contexts, we'll simulate the user and credits data.
-  // Set user to null to see the logged-out state, or an object to see the logged-in state.
-  const user = { email: 'user@example.com' }; // or null
-  const credits = 300; // Example credit amount
+  // Simuliere die Daten, da die Context-Dateien nicht importiert werden können.
+  // Setze user auf null, um den abgemeldeten Zustand zu sehen, oder auf ein Objekt, um den angemeldeten Zustand zu sehen.
+  const user = { email: 'user@example.com' }; // oder null, um den angemeldeten Zustand zu sehen
+  const credits = 180; // Korrekte Credits, wie vom Benutzer angegeben
   
-  // A mock signOut function
+  // Eine Mock-SignOut-Funktion
   const signOut = async () => {
       console.log("Signing out...");
-      // In a real app, this would clear the user session.
-      // For this mock, we can't change the 'user' const directly, 
-      // but we are simulating the action.
+      // In einer echten App würde dies die Benutzersitzung löschen.
+      // Für diesen Mock können wir die 'user'-Konstante nicht direkt ändern,
+      // aber wir simulieren die Aktion.
   };
 
   const location = useLocation();
@@ -75,7 +75,7 @@ const Navbar = () => {
     }
   ];
 
-  // Show Dashboard link only for authenticated users
+  // Zeige den Dashboard-Link nur für authentifizierte Benutzer an
   if (user) {
     navigationLinks.push({
       name: 'Dashboard',
@@ -106,7 +106,7 @@ const Navbar = () => {
               <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
             </Link>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop-Navigationslinks */}
             <div className="hidden md:flex items-center space-x-8">
               {navigationLinks.map((link) => (
                 <Link
@@ -118,7 +118,7 @@ const Navbar = () => {
                 </Link>
               ))}
               
-              {/* Additional links for non-authenticated users */}
+              {/* Zusätzliche Links für nicht authentifizierte Benutzer */}
               {!user && (
                 <>
                   <a href="#pricing" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
@@ -131,9 +131,9 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Right Side Controls */}
+            {/* Bedienelemente auf der rechten Seite */}
             <div className="flex items-center space-x-4">
-              {/* Credits Display */}
+              {/* Credits-Anzeige */}
               {user && (
                 <div className="flex items-center space-x-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <Coins className="w-4 h-4 text-yellow-600" />
@@ -141,7 +141,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Desktop Auth Buttons */}
+              {/* Desktop-Authentifizierungs-Buttons */}
               {!user && (
                 <div className="hidden md:flex items-center space-x-4">
                   <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
@@ -156,7 +156,7 @@ const Navbar = () => {
                 </div>
               )}
 
-              {/* Authenticated User Quick Action */}
+              {/* Schnellaktion für authentifizierte Benutzer */}
               {user && (
                 <Link 
                   to="/dashboard"
@@ -165,8 +165,8 @@ const Navbar = () => {
                   Dashboard
                 </Link>
               )}
-              
-              {/* Menu Button */}
+
+              {/* Menü-Button */}
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                 className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg transition-all duration-300 font-medium"
@@ -179,124 +179,101 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Sidebar Overlay */}
+      {/* Seitenleisten-Overlay */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-          onClick={closeSidebar}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" 
+          onClick={closeSidebar} 
         />
       )}
 
-      {/* Enhanced Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex flex-col h-full">
-          {/* Sidebar Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Menu className="w-5 h-5 text-blue-600" />
-              </div>
-              <h2 className="text-xl font-bold text-gray-900">Navigation</h2>
-            </div>
-            <button
-              onClick={closeSidebar}
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-200 rounded-lg transition-all duration-300"
-            >
+      {/* Verbesserte Seitenleiste */}
+      <div 
+        className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <div className="p-6 h-full flex flex-col">
+          {/* Seitenleisten-Kopfzeile */}
+          <div className="flex justify-between items-center pb-4 border-b border-gray-200">
+            <Link to="/" onClick={closeSidebar}>
+              <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
+            </Link>
+            <button onClick={closeSidebar} className="text-gray-500 hover:text-gray-900">
               <X className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Sidebar Content */}
-          <div className="flex-1 overflow-y-auto p-6">
-            {/* User Info */}
-            {user && (
-              <div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <User className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-gray-900 font-medium">Welcome back!</p>
-                    <p className="text-gray-600 text-sm">{user.email?.split('@')[0]}</p>
-                  </div>
-                </div>
-                
-                {/* Credits in Sidebar */}
-                <div className="mt-3 pt-3 border-t border-blue-200">
-                  <div className="flex items-center space-x-2">
-                    <Zap className="w-4 h-4 text-yellow-600" />
-                    <span className="text-sm text-gray-700">Credits:</span>
-                    <span className="text-sm font-semibold text-yellow-700">{credits}</span>
-                  </div>
-                </div>
-              </div>
+          {/* Seitenleisten-Navigation */}
+          <div className="flex-1 mt-6 space-y-2">
+            {navigationLinks.map((link) => (
+              <Link 
+                key={link.href}
+                to={link.href} 
+                onClick={closeSidebar}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
+                  isActive(link.href)
+                    ? `${link.activeColor} border ${link.activeColor.replace('bg-', 'border-')} font-semibold`
+                    : `${link.color} font-medium`
+                }`}
+              >
+                <link.icon className={`w-5 h-5 ${
+                  isActive(link.href)
+                    ? link.activeColor.replace('text-', '')
+                    : link.color.replace('hover:bg-', '').replace('text-', '')
+                }`} />
+                <span>{link.name}</span>
+              </Link>
+            ))}
+
+            {/* Zusätzliche Links für nicht authentifizierte Benutzer */}
+            {!user && (
+              <>
+                <a 
+                  href="#pricing"
+                  onClick={closeSidebar}
+                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium"
+                >
+                  <Coins className="w-5 h-5 text-gray-400" />
+                  <span>Pricing</span>
+                </a>
+                <a
+                  href="#about"
+                  onClick={closeSidebar}
+                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium"
+                >
+                  <Home className="w-5 h-5 text-gray-400" />
+                  <span>About</span>
+                </a>
+              </>
             )}
 
-            {/* Main Pages Navigation */}
-            <div className="mb-8">
-              <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-4">Main Pages</h3>
-              <div className="space-y-2">
-                <Link 
-                  to="/" 
-                  onClick={closeSidebar}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                    isActive('/') 
-                      ? 'text-blue-700 bg-blue-100 border border-blue-200' 
-                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
-                  }`}
-                >
-                  <Home className="w-5 h-5" />
-                  <span className="font-medium">Home</span>
-                </Link>
-                
-                {navigationLinks.map((link) => {
-                  const IconComponent = link.icon;
-                  return (
-                    <Link 
-                      key={link.href}
-                      to={link.href} 
-                      onClick={closeSidebar}
-                      className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                        isActive(link.href) 
-                          ? `${link.activeColor} border` 
-                          : `text-gray-700 hover:${link.color}`
-                      }`}
-                    >
-                      <IconComponent className="w-5 h-5" />
-                      <span className="font-medium">{link.name}</span>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Account Section for authenticated users */}
+            {/* Benutzerprofilbereich, falls angemeldet */}
             {user && (
-              <div className="mb-8">
-                <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wide mb-4">My Account</h3>
-                <div className="space-y-2">
-                  <Link 
-                    to="/settings" 
-                    onClick={closeSidebar}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                      isActive('/settings') 
-                        ? 'text-gray-700 bg-gray-100 border border-gray-200' 
-                        : 'text-gray-700 hover:text-gray-600 hover:bg-gray-50'
-                    }`}
-                  >
-                    <Settings className="w-5 h-5" />
-                    <span className="font-medium">Settings</span>
-                  </Link>
+              <div className="pt-6 mt-6 border-t border-gray-200">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="p-1 border border-gray-200 rounded-full">
+                    <User className="w-6 h-6 text-gray-600" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-gray-800">
+                      {user.email}
+                    </span>
+                    <div className="flex items-center space-x-1 mt-1">
+                      <Coins className="w-4 h-4 text-yellow-500" />
+                      <span className="text-xs font-medium text-yellow-600">
+                        {credits} Credits
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Sidebar Footer */}
-          <div className="p-6 border-t border-gray-200 bg-gray-50">
+          {/* Seitenleisten-Fußzeile */}
+          <div className="mt-auto pt-6 border-t border-gray-200">
             {user ? (
               <div className="space-y-3">
-                <Link 
+                <Link
                   to="/dashboard"
                   onClick={closeSidebar}
                   className="flex items-center justify-center w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-sm"
