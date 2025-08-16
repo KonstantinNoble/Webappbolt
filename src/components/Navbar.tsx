@@ -23,7 +23,7 @@ const Navbar = () => {
   // Simuliere die Daten, da die Context-Dateien nicht importiert werden können.
   // Setze user auf null, um den abgemeldeten Zustand zu sehen, oder auf ein Objekt, um den angemeldeten Zustand zu sehen.
   const user = { email: 'user@example.com' }; // oder null, um den angemeldeten Zustand zu sehen
-  const credits = 10; // Korrekte Credits, wie vom Benutzer angegeben
+   // Korrekte Credits, wie vom Benutzer angegeben
   
   // Eine Mock-SignOut-Funktion
   const signOut = async () => {
