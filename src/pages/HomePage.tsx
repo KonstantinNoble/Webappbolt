@@ -23,57 +23,8 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Bar */}
-      <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="relative p-2 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50">
-                <div className="relative w-8 h-8">
-                  <svg viewBox="0 0 100 100" className="w-full h-full">
-                    <circle cx="40" cy="40" r="25" fill="none" stroke="#3B82F6" strokeWidth="4"/>
-                    <circle cx="40" cy="40" r="15" fill="none" stroke="#3B82F6" strokeWidth="3"/>
-                    <line x1="60" y1="60" x2="85" y2="85" stroke="#6B7280" strokeWidth="6" strokeLinecap="round"/>
-                    <circle cx="40" cy="40" r="2" fill="#3B82F6"/>
-                  </svg>
-                </div>
-              </div>
-              <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
-            </div>
-
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link to="/learning-plans" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Features</Link>
-              <Link to="/quiz" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Quiz</Link>
-              <a href="#pricing" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Pricing</a>
-              <a href="#about" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">About</a>
-              
-              {user ? (
-                <Link 
-                  to="/dashboard"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Dashboard
-                </Link>
-              ) : (
-                <div className="flex items-center space-x-4">
-                  <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Sign In</Link>
-                  <Link 
-                    to="/register"
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                  >
-                    Get Started
-                  </Link>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-20 pb-32">
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
@@ -144,151 +95,6 @@ const HomePage = () => {
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Why Choose QuotaSkill?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our AI-powered platform provides personalized learning experiences that adapt to your goals and schedule.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            {/* Feature 1 */}
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 group-hover:bg-blue-200 transition-colors">
-                <BookOpen className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Learning Plans</h3>
-              <p className="text-gray-600 leading-relaxed">
-                AI creates customized learning paths based on your current knowledge, goals, and preferred learning style.
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-6 group-hover:bg-green-200 transition-colors">
-                <Target className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Adaptive Assessments</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Smart quizzes that adjust difficulty in real-time to challenge you at the perfect level for optimal learning.
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="text-center group">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-2xl mb-6 group-hover:bg-purple-200 transition-colors">
-                <TrendingUp className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Progress Tracking</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Comprehensive analytics and insights to track your learning journey and celebrate your achievements.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Learning Tiers Section */}
-      <section id="pricing" className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Choose Your Learning Level
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Two quality tiers designed to match your learning needs and budget. Start with 300 free credits every month.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Basic Tier */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative hover:shadow-xl transition-shadow">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic</h3>
-                <div className="flex items-center justify-center space-x-2 mb-4">
-                  <span className="text-4xl font-bold text-blue-600">120</span>
-                  <span className="text-gray-500">credits</span>
-                </div>
-                <p className="text-gray-500">Powered by GPT-4o Mini</p>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Comprehensive learning plans</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Quality curated resources</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Industry insights</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Practical exercises</span>
-                </li>
-              </ul>
-
-              <Link 
-                to={user ? "/learning-plans" : "/register"}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
-              >
-                {user ? 'Create Learning Plan' : 'Get Started'}
-              </Link>
-            </div>
-
-            {/* Premium Tier */}
-            <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-200 p-8 relative hover:shadow-xl transition-shadow">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span>
-              </div>
-              
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium</h3>
-                <div className="flex items-center justify-center space-x-2 mb-4">
-                  <span className="text-4xl font-bold text-blue-600">160</span>
-                  <span className="text-gray-500">credits</span>
-                </div>
-                <p className="text-gray-500">Powered by GPT-4o</p>
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                  <span className="text-gray-700">Expert-level learning plans</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                  <span className="text-gray-700">Premium resources & content</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                  <span className="text-gray-700">Advanced career guidance</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                  <span className="text-gray-700">Cutting-edge insights</span>
-                </li>
-              </ul>
-
-              <Link 
-                to={user ? "/learning-plans" : "/register"}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
-              >
-                {user ? 'Create Learning Plan' : 'Get Started'}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quiz Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Test Your Knowledge
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Challenge yourself with AI-generated quizzes tailored to your skill level and learning objectives.
@@ -674,7 +480,7 @@ const HomePage = () => {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
-                      window.displayPreferenceModal();
+                      window.displayPreferenceModal?.();
                     }}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
@@ -700,14 +506,149 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePage;-gray-600 max-w-3xl mx-auto">
+              Our AI-powered platform provides personalized learning experiences that adapt to your goals and schedule.
+            </p>
+          </div>
 
+          <div className="grid md:grid-cols-3 gap-12">
+            {/* Feature 1 */}
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-6 group-hover:bg-blue-200 transition-colors">
+                <BookOpen className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Personalized Learning Plans</h3>
+              <p className="text-gray-600 leading-relaxed">
+                AI creates customized learning paths based on your current knowledge, goals, and preferred learning style.
+              </p>
+            </div>
 
+            {/* Feature 2 */}
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-6 group-hover:bg-green-200 transition-colors">
+                <Target className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Adaptive Assessments</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Smart quizzes that adjust difficulty in real-time to challenge you at the perfect level for optimal learning.
+              </p>
+            </div>
 
+            {/* Feature 3 */}
+            <div className="text-center group">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-2xl mb-6 group-hover:bg-purple-200 transition-colors">
+                <TrendingUp className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Progress Tracking</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Comprehensive analytics and insights to track your learning journey and celebrate your achievements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      
+      {/* Learning Tiers Section */}
+      <section id="pricing" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Choose Your Learning Level
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Two quality tiers designed to match your learning needs and budget. Start with 300 free credits every month.
+            </p>
+          </div>
 
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Basic Tier */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative hover:shadow-xl transition-shadow">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic</h3>
+                <div className="flex items-center justify-center space-x-2 mb-4">
+                  <span className="text-4xl font-bold text-blue-600">120</span>
+                  <span className="text-gray-500">credits</span>
+                </div>
+                <p className="text-gray-500">Powered by GPT-4o Mini</p>
+              </div>
 
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700">Comprehensive learning plans</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700">Quality curated resources</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700">Industry insights</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <span className="text-gray-700">Practical exercises</span>
+                </li>
+              </ul>
 
+              <Link 
+                to={user ? "/learning-plans" : "/register"}
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+              >
+                {user ? 'Create Learning Plan' : 'Get Started'}
+              </Link>
+            </div>
 
-      
+            {/* Premium Tier */}
+            <div className="bg-white rounded-2xl shadow-lg border-2 border-blue-200 p-8 relative hover:shadow-xl transition-shadow">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold">Most Popular</span>
+              </div>
+              
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium</h3>
+                <div className="flex items-center justify-center space-x-2 mb-4">
+                  <span className="text-4xl font-bold text-blue-600">160</span>
+                  <span className="text-gray-500">credits</span>
+                </div>
+                <p className="text-gray-500">Powered by GPT-4o</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center space-x-3">
+                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <span className="text-gray-700">Expert-level learning plans</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <span className="text-gray-700">Premium resources & content</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <span className="text-gray-700">Advanced career guidance</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Star className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <span className="text-gray-700">Cutting-edge insights</span>
+                </li>
+              </ul>
+
+              <Link 
+                to={user ? "/learning-plans" : "/register"}
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+              >
+                {user ? 'Create Learning Plan' : 'Get Started'}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quiz Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Test Your Knowledge
+            </h2>
+            <p className="text-xl text
