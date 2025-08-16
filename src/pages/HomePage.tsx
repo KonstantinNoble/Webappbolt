@@ -1,6 +1,6 @@
 "use client"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useAuth } from "../contexts/AuthContext"
 import {
   BookOpen,
   Zap,
@@ -18,23 +18,11 @@ import {
 } from "lucide-react"
 
 const HomePage = () => {
-  // You can toggle this to test both states: true for logged in, false for logged out
-  const [user, setUser] = useState(null) // Change to { name: 'John Doe' } to test logged-in state
-
-  const toggleUserState = () => {
-    setUser(user ? null : { name: "Test User" })
-  }
+  const { user } = useAuth()
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="fixed top-4 right-4 z-50">
-        <button
-          onClick={toggleUserState}
-          className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
-        >
-          {user ? "Switch to Guest View" : "Switch to User View"}
-        </button>
-      </div>
+      <div className="fixed top-4 right-4 z-50">{/* Placeholder for any authentication toggle button or link */}</div>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 pb-32">
@@ -72,7 +60,7 @@ const HomePage = () => {
             ) : (
               <>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Welcome back, <span className="text-blue-600">{user.name || "Learner"}!</span>
+                  Welcome back, <span className="text-blue-600">{user.email?.split("@")[0] || "Learner"}!</span>
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
