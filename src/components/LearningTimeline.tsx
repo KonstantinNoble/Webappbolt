@@ -240,62 +240,72 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="animate-pulse">
-          <div className="w-16 h-16 border-4 border-purple-400 border-t-transparent rounded-full animate-spin"></div>
+      <div className="flex items-center justify-center py-16 bg-gray-50 min-h-screen">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600 font-medium">Loading your learning journey...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full bg-gray-900 text-white">
+    <div className="w-full min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-900 border-b border-gray-700 p-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-lg">
-              <Sparkles className="w-6 h-6 text-white" />
+      <div className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+            <div className="flex items-center space-x-3 mb-4 sm:mb-0">
+              <div className="p-3 bg-blue-100 rounded-xl">
+                <Sparkles className="w-8 h-8 text-blue-600" />
+              </div>
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+                  {goal ? `${goal.title}` : 'Your Learning Journey'}
+                </h1>
+                <p className="text-gray-600 text-sm sm:text-base mt-1">
+                  Track your progress and achievements
+                </p>
+              </div>
             </div>
-            <h1 className="text-3xl font-bold">
-              {goal ? `${goal.title} - Learning Journey` : 'Your Learning Journey'}
-            </h1>
+            
+            {/* Filter */}
+            <div className="flex items-center space-x-2">
+              <Filter className="w-4 h-4 text-gray-500" />
+              <select
+                value={filter}
+                onChange={(e) => setFilter(e.target.value as any)}
+                className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="all">All Activities</option>
+                <option value="learning_plan">Learning Plans</option>
+                <option value="quiz">Quizzes</option>
+                <option value="goal">Goals</option>
+                <option value="note">Notes</option>
+              </select>
+            </div>
           </div>
           
-          {/* Filter */}
-          <div className="flex items-center space-x-2">
-            <Filter className="w-4 h-4 text-gray-400" />
-            <select
-              value={filter}
-              onChange={(e) => setFilter(e.target.value as any)}
-              className="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white text-sm"
-            >
-              <option value="all">All Activities</option>
-              <option value="learning_plan">Learning Plans</option>
-              <option value="quiz">Quizzes</option>
-              <option value="goal">Goals</option>
-              <option value="note">Notes</option>
-            </select>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <p className="text-blue-800 font-medium">
+              {filteredItems.length} activities in your learning timeline
+            </p>
           </div>
         </div>
-        
-        <p className="text-gray-300">
-          {filteredItems.length} activities in your learning timeline
-        </p>
       </div>
 
       {/* Timeline */}
-      <div className="p-6">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {filteredItems.length > 0 ? (
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 via-cyan-400 to-pink-400"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 hidden sm:block"></div>
             
             <div className="space-y-8">
               {filteredItems.map((item, index) => (
-                <div key={item.id} className="relative flex items-start space-x-6">
+                <div key={item.id} className="relative flex items-start space-x-0 sm:space-x-6">
                   {/* Timeline Marker */}
-                  <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${getItemColor(item.type, item)} shadow-lg`}>
+                  <div className={`relative z-10 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r ${getItemColor(item.type, item)} shadow-lg hidden sm:flex`}>
                     <div className="text-white">
                       {getItemIcon(item.type)}
                     </div>
@@ -307,29 +317,36 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
                   </div>
 
                   {/* Content Card */}
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 w-full sm:w-auto">
                     <div 
-                      className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 border border-gray-700 hover:border-gray-600 rounded-xl p-6 cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-purple-400/10 hover:scale-[1.02]"
+                      className="group bg-white border border-gray-200 hover:border-gray-300 rounded-xl p-6 cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-blue-100 hover:scale-[1.02] shadow-sm"
                       onClick={() => handleItemClick(item)}
                     >
+                      {/* Mobile Icon (visible on small screens) */}
+                      <div className={`flex sm:hidden items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${getItemColor(item.type, item)} mb-4`}>
+                        <div className="text-white">
+                          {getItemIcon(item.type)}
+                        </div>
+                      </div>
+
                       {/* Header */}
                       <div className="flex items-start justify-between mb-3">
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors truncate">
                             {item.title}
                           </h3>
-                          <p className="text-gray-400 text-sm mb-2">{item.description}</p>
+                          <p className="text-gray-600 text-sm mb-2 line-clamp-2">{item.description}</p>
                         </div>
                         
-                        <div className="flex items-center space-x-2 text-xs text-gray-400">
-                          <Calendar className="w-3 h-3" />
-                          <span>{formatDate(item.date)}</span>
+                        <div className="flex items-center space-x-2 text-xs text-gray-500 ml-4">
+                          <Calendar className="w-3 h-3 flex-shrink-0" />
+                          <span className="whitespace-nowrap">{formatDate(item.date)}</span>
                         </div>
                       </div>
 
                       {/* Metadata */}
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap gap-2">
                           {/* Type Badge */}
                           <span className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${getItemColor(item.type, item)} text-white`}>
                             {item.type.replace('_', ' ').toUpperCase()}
@@ -337,22 +354,22 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
                           
                           {/* Additional Info */}
                           {item.credits_used && (
-                            <span className="text-xs text-yellow-400 flex items-center space-x-1">
+                            <span className="text-xs text-yellow-600 flex items-center space-x-1 bg-yellow-50 px-2 py-1 rounded-full">
                               <Zap className="w-3 h-3" />
                               <span>{item.credits_used} credits</span>
                             </span>
                           )}
                           
                           {item.score !== undefined && item.total_questions && (
-                            <span className="text-xs text-green-400 flex items-center space-x-1">
+                            <span className="text-xs text-green-600 flex items-center space-x-1 bg-green-50 px-2 py-1 rounded-full">
                               <Trophy className="w-3 h-3" />
                               <span>{Math.round(item.score / item.total_questions * 100)}%</span>
                             </span>
                           )}
                           
                           {item.status && (
-                            <span className={`text-xs flex items-center space-x-1 ${
-                              item.status === 'done' ? 'text-green-400' : 'text-blue-400'
+                            <span className={`text-xs flex items-center space-x-1 px-2 py-1 rounded-full ${
+                              item.status === 'done' ? 'text-green-600 bg-green-50' : 'text-blue-600 bg-blue-50'
                             }`}>
                               {item.status === 'done' ? <CheckCircle className="w-3 h-3" /> : <Circle className="w-3 h-3" />}
                               <span>{item.status.replace('_', ' ')}</span>
@@ -367,7 +384,7 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
                               e.stopPropagation();
                               toggleExpanded(item.id);
                             }}
-                            className="text-gray-400 hover:text-white transition-colors"
+                            className="text-gray-400 hover:text-gray-600 transition-colors ml-2"
                           >
                             {expandedItems.has(item.id) ? 
                               <ChevronUp className="w-4 h-4" /> : 
@@ -379,8 +396,8 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
                       
                       {/* Expanded Content Preview */}
                       {expandedItems.has(item.id) && item.content && (
-                        <div className="mt-4 p-4 bg-gray-700/30 rounded-lg border border-gray-600/30">
-                          <p className="text-gray-300 text-sm line-clamp-3">
+                        <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                          <p className="text-gray-700 text-sm line-clamp-3">
                             {item.type === 'note' ? item.content : 
                              item.content.length > 200 ? item.content.substring(0, 200) + '...' : item.content}
                           </p>
@@ -389,7 +406,7 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
                               e.stopPropagation();
                               handleItemClick(item);
                             }}
-                            className="mt-2 text-purple-400 hover:text-purple-300 text-xs font-medium flex items-center space-x-1"
+                            className="mt-2 text-blue-600 hover:text-blue-700 text-xs font-medium flex items-center space-x-1"
                           >
                             <span>View Full Details</span>
                             <ExternalLink className="w-3 h-3" />
@@ -404,11 +421,11 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
           </div>
         ) : (
           <div className="text-center py-16">
-            <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
               <Clock className="w-8 h-8 text-gray-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2">No activities yet</h3>
-            <p className="text-gray-400 mb-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">No activities yet</h3>
+            <p className="text-gray-600 mb-6 max-w-md mx-auto">
               Start creating learning plans or taking quizzes to build your timeline
             </p>
           </div>
@@ -418,155 +435,157 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
       {/* Modal for detailed view */}
       {showModal && selectedItem && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-gray-700">
+          <div className="bg-white border border-gray-200 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <div className="p-6 border-b border-gray-200 bg-gray-50">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className={`p-2 rounded-lg bg-gradient-to-r ${getItemColor(selectedItem.type, selectedItem)}`}>
-                    {getItemIcon(selectedItem.type)}
+                  <div className={`p-3 rounded-lg bg-gradient-to-r ${getItemColor(selectedItem.type, selectedItem)}`}>
+                    <div className="text-white">
+                      {getItemIcon(selectedItem.type)}
+                    </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white">{selectedItem.title}</h2>
-                    <p className="text-gray-400">{formatDate(selectedItem.date)}</p>
+                    <h2 className="text-2xl font-bold text-gray-900">{selectedItem.title}</h2>
+                    <p className="text-gray-600">{formatDate(selectedItem.date)}</p>
                   </div>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-all duration-300"
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-200 rounded-lg transition-all duration-300"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              
-              <div className="p-6">
-                {selectedItem.type === 'learning_plan' && selectedItem.content ? (
-                  <div>
-                    {(() => {
-                      try {
-                        const planData = JSON.parse(selectedItem.content);
-                        return (
-                          <div className="space-y-6">
-                            <div>
-                              <h3 className="text-xl font-bold text-white mb-4">Learning Plan Overview</h3>
-                              <p className="text-gray-300 mb-4">
-                                {planData.overview?.description || planData.description || 'Comprehensive learning plan'}
-                              </p>
-                              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="bg-gray-700/30 rounded-lg p-3">
-                                  <p className="text-sm text-gray-400">Tier</p>
-                                  <p className="text-white font-semibold capitalize">{selectedItem.tier}</p>
-                                </div>
-                                <div className="bg-gray-700/30 rounded-lg p-3">
-                                  <p className="text-sm text-gray-400">Credits Used</p>
-                                  <p className="text-white font-semibold">{selectedItem.credits_used}</p>
-                                </div>
-                                <div className="bg-gray-700/30 rounded-lg p-3">
-                                  <p className="text-sm text-gray-400">Duration</p>
-                                  <p className="text-white font-semibold">{planData.overview?.duration || 'Self-paced'}</p>
-                                </div>
-                                <div className="bg-gray-700/30 rounded-lg p-3">
-                                  <p className="text-sm text-gray-400">Phases</p>
-                                  <p className="text-white font-semibold">{planData.phases?.length || 0}</p>
-                                </div>
+            </div>
+            
+            <div className="p-6">
+              {selectedItem.type === 'learning_plan' && selectedItem.content ? (
+                <div>
+                  {(() => {
+                    try {
+                      const planData = JSON.parse(selectedItem.content);
+                      return (
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Learning Plan Overview</h3>
+                            <p className="text-gray-700 mb-4">
+                              {planData.overview?.description || planData.description || 'Comprehensive learning plan'}
+                            </p>
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                <p className="text-sm text-gray-600">Tier</p>
+                                <p className="text-gray-900 font-semibold capitalize">{selectedItem.tier}</p>
+                              </div>
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                <p className="text-sm text-gray-600">Credits Used</p>
+                                <p className="text-gray-900 font-semibold">{selectedItem.credits_used}</p>
+                              </div>
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                <p className="text-sm text-gray-600">Duration</p>
+                                <p className="text-gray-900 font-semibold">{planData.overview?.duration || 'Self-paced'}</p>
+                              </div>
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                                <p className="text-sm text-gray-600">Phases</p>
+                                <p className="text-gray-900 font-semibold">{planData.phases?.length || 0}</p>
                               </div>
                             </div>
-                            
-                            {planData.phases && (
-                              <div>
-                                <h4 className="text-lg font-semibold text-white mb-3">Learning Phases</h4>
-                                <div className="space-y-3">
-                                  {planData.phases.slice(0, 3).map((phase: any, index: number) => (
-                                    <div key={index} className="bg-gray-700/20 rounded-lg p-4">
-                                      <h5 className="font-semibold text-white mb-2">{phase.title}</h5>
-                                      <p className="text-gray-300 text-sm">{phase.description}</p>
-                                    </div>
-                                  ))}
-                                  {planData.phases.length > 3 && (
-                                    <p className="text-gray-400 text-sm">
-                                      ... and {planData.phases.length - 3} more phases
-                                    </p>
-                                  )}
-                                </div>
-                              </div>
-                            )}
                           </div>
-                        );
-                      } catch (error) {
-                        return <p className="text-gray-400">Unable to display plan details.</p>;
-                      }
-                    })()}
-                  </div>
-                ) : selectedItem.type === 'quiz' && selectedItem.content ? (
-                  <div>
-                    {(() => {
-                      try {
-                        const quizData = JSON.parse(selectedItem.content);
-                        return (
-                          <div className="space-y-6">
+                          
+                          {planData.phases && (
                             <div>
-                              <h3 className="text-xl font-bold text-white mb-4">Quiz Results</h3>
-                              <div className="grid grid-cols-3 gap-4 mb-6">
-                                <div className="bg-gray-700/30 rounded-lg p-3 text-center">
-                                  <p className="text-sm text-gray-400">Score</p>
-                                  <p className="text-2xl font-bold text-green-400">{selectedItem.score}/{selectedItem.total_questions}</p>
-                                </div>
-                                <div className="bg-gray-700/30 rounded-lg p-3 text-center">
-                                  <p className="text-sm text-gray-400">Percentage</p>
-                                  <p className="text-2xl font-bold text-cyan-400">{Math.round((selectedItem.score || 0) / (selectedItem.total_questions || 1) * 100)}%</p>
-                                </div>
-                                <div className="bg-gray-700/30 rounded-lg p-3 text-center">
-                                  <p className="text-sm text-gray-400">Difficulty</p>
-                                  <p className="text-lg font-bold text-purple-400 capitalize">{selectedItem.difficulty}</p>
-                                </div>
+                              <h4 className="text-lg font-semibold text-gray-900 mb-3">Learning Phases</h4>
+                              <div className="space-y-3">
+                                {planData.phases.slice(0, 3).map((phase: any, index: number) => (
+                                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    <h5 className="font-semibold text-gray-900 mb-2">{phase.title}</h5>
+                                    <p className="text-gray-700 text-sm">{phase.description}</p>
+                                  </div>
+                                ))}
+                                {planData.phases.length > 3 && (
+                                  <p className="text-gray-600 text-sm">
+                                    ... and {planData.phases.length - 3} more phases
+                                  </p>
+                                )}
                               </div>
                             </div>
-                            
-                            {quizData.questions && (
-                              <div>
-                                <h4 className="text-lg font-semibold text-white mb-3">Sample Questions</h4>
-                                <div className="space-y-4">
-                                  {quizData.questions.slice(0, 2).map((question: any, index: number) => (
-                                    <div key={index} className="bg-gray-700/20 rounded-lg p-4">
-                                      <h5 className="font-semibold text-white mb-2">
-                                        Q{index + 1}: {question.question}
-                                      </h5>
-                                      <div className="text-sm text-gray-300">
-                                        Correct Answer: {question.options?.[question.correct]}
-                                      </div>
-                                    </div>
-                                  ))}
-                                  {quizData.questions.length > 2 && (
-                                    <p className="text-gray-400 text-sm">
-                                      ... and {quizData.questions.length - 2} more questions
-                                    </p>
-                                  )}
-                                </div>
+                          )}
+                        </div>
+                      );
+                    } catch (error) {
+                      return <p className="text-gray-600">Unable to display plan details.</p>;
+                    }
+                  })()}
+                </div>
+              ) : selectedItem.type === 'quiz' && selectedItem.content ? (
+                <div>
+                  {(() => {
+                    try {
+                      const quizData = JSON.parse(selectedItem.content);
+                      return (
+                        <div className="space-y-6">
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-4">Quiz Results</h3>
+                            <div className="grid grid-cols-3 gap-4 mb-6">
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+                                <p className="text-sm text-gray-600">Score</p>
+                                <p className="text-2xl font-bold text-green-600">{selectedItem.score}/{selectedItem.total_questions}</p>
                               </div>
-                            )}
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+                                <p className="text-sm text-gray-600">Percentage</p>
+                                <p className="text-2xl font-bold text-blue-600">{Math.round((selectedItem.score || 0) / (selectedItem.total_questions || 1) * 100)}%</p>
+                              </div>
+                              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 text-center">
+                                <p className="text-sm text-gray-600">Difficulty</p>
+                                <p className="text-lg font-bold text-purple-600 capitalize">{selectedItem.difficulty}</p>
+                              </div>
+                            </div>
                           </div>
-                        );
-                      } catch (error) {
-                        return <p className="text-gray-400">Unable to display quiz details.</p>;
-                      }
-                    })()}
-                  </div>
-                ) : (
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Details</h3>
-                    <p className="text-gray-300 mb-4">{selectedItem.description}</p>
-                    {selectedItem.content && (
-                      <div className="bg-gray-700/30 rounded-lg p-4">
-                        <pre className="text-gray-300 text-sm whitespace-pre-wrap">
-                          {selectedItem.content.length > 500 ? 
-                            selectedItem.content.substring(0, 500) + '...' : 
-                            selectedItem.content
-                          }
-                        </pre>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+                          
+                          {quizData.questions && (
+                            <div>
+                              <h4 className="text-lg font-semibold text-gray-900 mb-3">Sample Questions</h4>
+                              <div className="space-y-4">
+                                {quizData.questions.slice(0, 2).map((question: any, index: number) => (
+                                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    <h5 className="font-semibold text-gray-900 mb-2">
+                                      Q{index + 1}: {question.question}
+                                    </h5>
+                                    <div className="text-sm text-gray-700">
+                                      Correct Answer: {question.options?.[question.correct]}
+                                    </div>
+                                  </div>
+                                ))}
+                                {quizData.questions.length > 2 && (
+                                  <p className="text-gray-600 text-sm">
+                                    ... and {quizData.questions.length - 2} more questions
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    } catch (error) {
+                      return <p className="text-gray-600">Unable to display quiz details.</p>;
+                    }
+                  })()}
+                </div>
+              ) : (
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Details</h3>
+                  <p className="text-gray-700 mb-4">{selectedItem.description}</p>
+                  {selectedItem.content && (
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                      <pre className="text-gray-700 text-sm whitespace-pre-wrap">
+                        {selectedItem.content.length > 500 ? 
+                          selectedItem.content.substring(0, 500) + '...' : 
+                          selectedItem.content
+                        }
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -576,3 +595,26 @@ const LearningTimeline: React.FC<LearningTimelineProps> = ({ goal, onGoalUpdate 
 };
 
 export default LearningTimeline;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
