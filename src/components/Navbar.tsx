@@ -73,6 +73,13 @@ const Navbar = () => {
       icon: FileText,
       color: 'text-pink-600 hover:bg-pink-50',
       activeColor: 'text-pink-700 bg-pink-100 border-pink-200'
+    },
+    {
+      name: 'Settings',
+      href: '/settings',
+      icon: Settings,
+      color: 'text-gray-600 hover:bg-gray-50',
+      activeColor: 'text-gray-700 bg-gray-100 border-gray-200'
     }
   ];
 
