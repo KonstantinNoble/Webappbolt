@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 "use client"
 import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
@@ -332,28 +322,7 @@ const HomePage = () => {
                   </div>
                 </Link>
 
-                {/* History */}
-                <Link
-                  to="/history"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-orange-300 group"
-                >
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className="p-3 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
-                      <History className="w-6 h-6 text-orange-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">Learning History</h3>
-                      <p className="text-gray-500 text-sm">Past Activities</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 mb-4">
-                    Browse your previous quizzes, plans, and activities for review and reflection.
-                  </p>
-                  <div className="flex items-center text-orange-600 font-medium">
-                    <span>View History</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
-                </Link>
+               
 
                 {/* Settings */}
                 <Link
