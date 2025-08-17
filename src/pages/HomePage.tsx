@@ -1,4 +1,14 @@
 
+
+
+
+
+
+
+
+
+
+
 "use client"
 import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
@@ -10,12 +20,13 @@ import {
   CheckCircle,
   Target,
   Users,
+  Clock,
+  Shield,
+  History,
   Settings,
   Brain,
   BarChart3,
 } from "lucide-react"
-// Import animate.css for animations
-import "animate.css"
 
 const HomePage = () => {
   const { user } = useAuth()
@@ -24,10 +35,10 @@ const HomePage = () => {
     <div className="min-h-screen bg-white">
       <div className="fixed top-4 right-4 z-50">{/* Placeholder for any authentication toggle button or link */}</div>
 
-      {/* Hero Section with Animation */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 pt-32 pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+          <div className="text-center max-w-4xl mx-auto">
             {!user ? (
               <>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
@@ -42,7 +53,7 @@ const HomePage = () => {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
                   <Link
                     to="/register"
-                    className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2 animate__animated animate__pulse animate__infinite animate__slower"
+                    className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                   >
                     <span>Get Started for Free</span>
                     <ArrowRight className="w-5 h-5" />
@@ -50,7 +61,7 @@ const HomePage = () => {
 
                   <Link
                     to="/learning-plans"
-                    className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300 animate__animated animate__pulse animate__infinite animate__slower"
+                    className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                   >
                     Explore Features
                   </Link>
@@ -69,7 +80,7 @@ const HomePage = () => {
                 <div className="flex justify-center mb-16">
                   <Link
                     to="/dashboard"
-                    className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2 animate__animated animate__pulse animate__infinite animate__slower"
+                    className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                   >
                     <span>Access Dashboard</span>
                     <ArrowRight className="w-5 h-5" />
@@ -78,8 +89,8 @@ const HomePage = () => {
               </>
             )}
 
-            {/* Trust Indicators with Animation */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-200 animate__animated animate__fadeInUp animate__delay-2s">
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-200">
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">Tailored</div>
                 <div className="text-gray-600 font-medium">Learning Paths</div>
@@ -103,10 +114,10 @@ const HomePage = () => {
 
       {!user ? (
         <>
-          {/* Features Section for New Users with Animation */}
+          {/* Features Section for New Users */}
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-20 animate__animated animate__fadeIn">
+              <div className="text-center mb-20">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Why QuotaSkill for AI-Powered Learning?</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                   Discover a smart platform that adapts to your learning style, helping you master skills efficiently with AI-driven tools.
@@ -115,7 +126,7 @@ const HomePage = () => {
 
               <div className="grid md:grid-cols-3 gap-8">
                 {/* AI Quizzes */}
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow animate__animated animate__fadeInLeft animate__delay-1s">
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-4">
                       <Brain className="w-8 h-8 text-green-600" />
@@ -141,14 +152,14 @@ const HomePage = () => {
 
                   <Link
                     to="/register"
-                    className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-center block animate__animated animate__pulse animate__infinite animate__slower"
+                    className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-center block"
                   >
                     Begin Your Assessment
                   </Link>
                 </div>
 
                 {/* Learning Plans */}
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow animate__animated animate__fadeInUp animate__delay-1s">
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-2xl mb-4">
                       <Target className="w-8 h-8 text-purple-600" />
@@ -174,14 +185,14 @@ const HomePage = () => {
 
                   <Link
                     to="/register"
-                    className="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors text-center block animate__animated animate__pulse animate__infinite animate__slower"
+                    className="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors text-center block"
                   >
                     Build Your Roadmap
                   </Link>
                 </div>
 
                 {/* Learning Hub */}
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow animate__animated animate__fadeInRight animate__delay-1s">
+                <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-shadow">
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-4">
                       <BookOpen className="w-8 h-8 text-blue-600" />
@@ -207,7 +218,7 @@ const HomePage = () => {
 
                   <Link
                     to="/register"
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center block animate__animated animate__pulse animate__infinite animate__slower"
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center block"
                   >
                     Get Organized Now
                   </Link>
@@ -218,10 +229,10 @@ const HomePage = () => {
         </>
       ) : (
         <>
-          {/* Quick Access Services for Authenticated Users with Animation */}
+          {/* Quick Access Services for Authenticated Users */}
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-20 animate__animated animate__fadeIn">
+              <div className="text-center mb-20">
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Your Personalized Learning Tools</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                   Easily navigate to your key features and continue building skills with clear, guided access.
@@ -232,7 +243,7 @@ const HomePage = () => {
                 {/* Dashboard */}
                 <Link
                   to="/dashboard"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-blue-300 group animate__animated animate__fadeInLeft animate__delay-1s"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-blue-300 group"
                 >
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
@@ -255,7 +266,7 @@ const HomePage = () => {
                 {/* AI Quizzes */}
                 <Link
                   to="/quiz"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-green-300 group animate__animated animate__fadeInUp animate__delay-1s"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-green-300 group"
                 >
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="p-3 bg-green-100 rounded-lg group-hover:bg-green-200 transition-colors">
@@ -278,7 +289,7 @@ const HomePage = () => {
                 {/* Learning Plans */}
                 <Link
                   to="/learning-plans"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-purple-300 group animate__animated animate__fadeInRight animate__delay-1s"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-purple-300 group"
                 >
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="p-3 bg-purple-100 rounded-lg group-hover:bg-purple-200 transition-colors">
@@ -301,7 +312,7 @@ const HomePage = () => {
                 {/* Personal Learning Hub */}
                 <Link
                   to="/learning-hub"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-indigo-300 group animate__animated animate__fadeInLeft animate__delay-2s"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-indigo-300 group"
                 >
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="p-3 bg-indigo-100 rounded-lg group-hover:bg-indigo-200 transition-colors">
@@ -321,10 +332,33 @@ const HomePage = () => {
                   </div>
                 </Link>
 
+                {/* History */}
+                <Link
+                  to="/history"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-orange-300 group"
+                >
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="p-3 bg-orange-100 rounded-lg group-hover:bg-orange-200 transition-colors">
+                      <History className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">Learning History</h3>
+                      <p className="text-gray-500 text-sm">Past Activities</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    Browse your previous quizzes, plans, and activities for review and reflection.
+                  </p>
+                  <div className="flex items-center text-orange-600 font-medium">
+                    <span>View History</span>
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </Link>
+
                 {/* Settings */}
                 <Link
                   to="/settings"
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-gray-400 group animate__animated animate__fadeInRight animate__delay-2s"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all hover:border-gray-400 group"
                 >
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="p-3 bg-gray-100 rounded-lg group-hover:bg-gray-200 transition-colors">
@@ -349,10 +383,10 @@ const HomePage = () => {
         </>
       )}
 
-      {/* Platform Features with Animation */}
+      {/* Platform Features */}
       <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20 animate__animated animate__fadeIn">
+          <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Your All-in-One AI Learning Platform</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Equip yourself with tools for effective skill development, from personalized plans to advanced AI insights.
@@ -361,7 +395,7 @@ const HomePage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Dashboard */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow animate__animated animate__fadeInLeft animate__delay-1s">
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="p-3 bg-blue-100 rounded-lg">
                   <TrendingUp className="w-6 h-6 text-blue-600" />
@@ -377,7 +411,7 @@ const HomePage = () => {
             </div>
 
             {/* Learning Hub */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow animate__animated animate__fadeInUp animate__delay-1s">
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="p-3 bg-purple-100 rounded-lg">
                   <BookOpen className="w-6 h-6 text-purple-600" />
@@ -391,7 +425,7 @@ const HomePage = () => {
             </div>
 
             {/* AI Technology */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow animate__animated animate__fadeInRight animate__delay-1s">
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="p-3 bg-green-100 rounded-lg">
                   <Zap className="w-6 h-6 text-green-600" />
@@ -407,7 +441,7 @@ const HomePage = () => {
             </div>
 
             {/* Professional Network */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow animate__animated animate__fadeInLeft animate__delay-2s">
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="p-3 bg-indigo-100 rounded-lg">
                   <Users className="w-6 h-6 text-indigo-600" />
@@ -425,9 +459,9 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA Section with Animation */}
+      {/* CTA Section */}
       <section className="py-24 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 animate__animated animate__fadeIn">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           {!user ? (
             <>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to Master New Skills with AI?</h2>
@@ -436,7 +470,7 @@ const HomePage = () => {
               </p>
 
               <div className="space-y-8">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 animate__animated animate__fadeInUp animate__delay-1s">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                   <div className="grid md:grid-cols-3 gap-6 mb-8">
                     <div className="text-center">
                       <div className="text-4xl mb-4">🎁</div>
@@ -457,7 +491,7 @@ const HomePage = () => {
 
                   <Link
                     to="/register"
-                    className="inline-flex items-center space-x-3 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl animate__animated animate__pulse animate__infinite animate__slower"
+                    className="inline-flex items-center space-x-3 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     <span>Begin Free Trial</span>
                     <ArrowRight className="w-5 h-5" />
@@ -477,7 +511,7 @@ const HomePage = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <Link
                   to="/dashboard"
-                  className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl animate__animated animate__pulse animate__infinite animate__slower"
+                  className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <span>Check Progress</span>
                   <BarChart3 className="w-5 h-5" />
@@ -485,7 +519,7 @@ const HomePage = () => {
 
                 <Link
                   to="/quiz"
-                  className="inline-flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 animate__animated animate__pulse animate__infinite animate__slower"
+                  className="inline-flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
                 >
                   <span>New Quiz</span>
                   <Brain className="w-5 h-5" />
@@ -618,14 +652,6 @@ const HomePage = () => {
 }
 
 export default HomePage
-
-
-
-
-
-
-
-
 
 
 
