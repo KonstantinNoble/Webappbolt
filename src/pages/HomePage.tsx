@@ -31,13 +31,12 @@ const HomePage = () => {
             {!user ? (
               <>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
-                  Master Any Skill with
-                  <span className="text-blue-600 block">AI-Powered Learning</span>
+                  Build Essential Skills with
+                  <span className="text-blue-600 block">AI-Powered Personalized Learning</span>
                 </h1>
 
                 <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
-                  Generate personalized learning plans, test your knowledge with AI quizzes, and track your progress.
-                  Join thousands of professionals advancing their careers.
+                  Create custom learning plans tailored to your goals, assess your progress with smart AI quizzes, and stay organized with intuitive tracking tools. Start your journey to skill mastery today.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
@@ -45,7 +44,7 @@ const HomePage = () => {
                     to="/register"
                     className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                   >
-                    <span>Start Free Trial</span>
+                    <span>Get Started for Free</span>
                     <ArrowRight className="w-5 h-5" />
                   </Link>
 
@@ -53,18 +52,18 @@ const HomePage = () => {
                     to="/learning-plans"
                     className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                   >
-                    View Demo
+                    Explore Features
                   </Link>
                 </div>
               </>
             ) : (
               <>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Welcome back, <span className="text-blue-600">{user.email?.split("@")[0] || "Learner"}!</span>
+                  Welcome Back, <span className="text-blue-600">{user.email?.split("@")[0] || "Learner"}!</span>
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
-                  Continue your learning journey. Choose from your personalized dashboard or explore new skills.
+                  Pick up right where you left off. Access your dashboard for quick insights, or dive into quizzes, plans, and more.
                 </p>
 
                 <div className="flex justify-center mb-16">
@@ -72,7 +71,7 @@ const HomePage = () => {
                     to="/dashboard"
                     className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center space-x-2"
                   >
-                    <span>Go to Dashboard</span>
+                    <span>Access Dashboard</span>
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
@@ -82,20 +81,20 @@ const HomePage = () => {
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">10K+</div>
-                <div className="text-gray-600 font-medium">Active Learners</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">Tailored</div>
+                <div className="text-gray-600 font-medium">Learning Paths</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
-                <div className="text-gray-600 font-medium">Skill Categories</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">Smart</div>
+                <div className="text-gray-600 font-medium">AI Quizzes</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">95%</div>
-                <div className="text-gray-600 font-medium">Success Rate</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">Intuitive</div>
+                <div className="text-gray-600 font-medium">Progress Tracking</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-                <div className="text-gray-600 font-medium">AI Support</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">Flexible</div>
+                <div className="text-gray-600 font-medium">Skill Building</div>
               </div>
             </div>
           </div>
@@ -108,9 +107,9 @@ const HomePage = () => {
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Why Choose QuotaSkill?</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Why QuotaSkill for AI-Powered Learning?</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  A complete learning ecosystem designed to accelerate your professional growth with AI-powered tools.
+                  Discover a smart platform that adapts to your learning style, helping you master skills efficiently with AI-driven tools.
                 </p>
               </div>
 
@@ -121,22 +120,22 @@ const HomePage = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-2xl mb-4">
                       <Brain className="w-8 h-8 text-green-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">AI-Powered Quizzes</h3>
-                    <p className="text-gray-600 text-sm mb-4">Test your knowledge with intelligent assessments</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Intelligent AI Quizzes</h3>
+                    <p className="text-gray-600 text-sm mb-4">Assess and reinforce your knowledge effectively</p>
                   </div>
 
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600 text-sm">3 difficulty levels</span>
+                      <span className="text-gray-600 text-sm">Adaptive difficulty levels</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600 text-sm">Instant feedback</span>
+                      <span className="text-gray-600 text-sm">Real-time feedback</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-gray-600 text-sm">Detailed explanations</span>
+                      <span className="text-gray-600 text-sm">In-depth explanations</span>
                     </li>
                   </ul>
 
@@ -144,7 +143,7 @@ const HomePage = () => {
                     to="/register"
                     className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-center block"
                   >
-                    Start Testing Your Skills
+                    Begin Your Assessment
                   </Link>
                 </div>
 
@@ -154,22 +153,22 @@ const HomePage = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-2xl mb-4">
                       <Target className="w-8 h-8 text-purple-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Personalized Learning Plans</h3>
-                    <p className="text-gray-600 text-sm mb-4">AI-generated roadmaps for your goals</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Customized Learning Plans</h3>
+                    <p className="text-gray-600 text-sm mb-4">Roadmaps designed for your specific objectives</p>
                   </div>
 
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-purple-500" />
-                      <span className="text-gray-600 text-sm">Custom learning paths</span>
+                      <span className="text-gray-600 text-sm">Goal-based customization</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-purple-500" />
-                      <span className="text-gray-600 text-sm">Progress tracking</span>
+                      <span className="text-gray-600 text-sm">Milestone tracking</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-purple-500" />
-                      <span className="text-gray-600 text-sm">Adaptive recommendations</span>
+                      <span className="text-gray-600 text-sm">Dynamic adjustments</span>
                     </li>
                   </ul>
 
@@ -177,7 +176,7 @@ const HomePage = () => {
                     to="/register"
                     className="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors text-center block"
                   >
-                    Create Your Plan
+                    Build Your Roadmap
                   </Link>
                 </div>
 
@@ -187,22 +186,22 @@ const HomePage = () => {
                     <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-4">
                       <BookOpen className="w-8 h-8 text-blue-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Personal Learning Hub</h3>
-                    <p className="text-gray-600 text-sm mb-4">Organize notes and track goals</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Integrated Learning Hub</h3>
+                    <p className="text-gray-600 text-sm mb-4">Centralize your notes and objectives</p>
                   </div>
 
                   <ul className="space-y-3 mb-6">
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-blue-500" />
-                      <span className="text-gray-600 text-sm">Smart note-taking</span>
+                      <span className="text-gray-600 text-sm">Efficient note organization</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-blue-500" />
-                      <span className="text-gray-600 text-sm">Goal management</span>
+                      <span className="text-gray-600 text-sm">Objective management</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-4 h-4 text-blue-500" />
-                      <span className="text-gray-600 text-sm">Progress insights</span>
+                      <span className="text-gray-600 text-sm">Performance insights</span>
                     </li>
                   </ul>
 
@@ -210,7 +209,7 @@ const HomePage = () => {
                     to="/register"
                     className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center block"
                   >
-                    Start Organizing
+                    Get Organized Now
                   </Link>
                 </div>
               </div>
@@ -223,9 +222,9 @@ const HomePage = () => {
           <section className="py-24 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Your Learning Tools</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Your Personalized Learning Tools</h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Access all your learning tools and continue your progress from where you left off.
+                  Easily navigate to your key features and continue building skills with clear, guided access.
                 </p>
               </div>
 
@@ -245,7 +244,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    View your learning progress, statistics, and performance insights at a glance.
+                    Get a quick overview of your progress, key metrics, and next steps in one place.
                   </p>
                   <div className="flex items-center text-blue-600 font-medium">
                     <span>Open Dashboard</span>
@@ -268,7 +267,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Challenge yourself with AI-generated quizzes across different difficulty levels.
+                    Select from various topics and difficulties to test and improve your skills.
                   </p>
                   <div className="flex items-center text-green-600 font-medium">
                     <span>Start Quiz</span>
@@ -291,7 +290,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Create and follow AI-generated learning plans tailored to your goals.
+                    Review or create new plans aligned with your career and skill development goals.
                   </p>
                   <div className="flex items-center text-purple-600 font-medium">
                     <span>View Plans</span>
@@ -314,7 +313,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Organize your learning materials, notes, and track personal objectives.
+                    Manage your notes, set new goals, and track achievements effortlessly.
                   </p>
                   <div className="flex items-center text-indigo-600 font-medium">
                     <span>Open Hub</span>
@@ -337,7 +336,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Review your learning history, quiz results, and completed activities.
+                    Browse your previous quizzes, plans, and activities for review and reflection.
                   </p>
                   <div className="flex items-center text-orange-600 font-medium">
                     <span>View History</span>
@@ -360,7 +359,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Manage your account settings, preferences, and learning configurations.
+                    Customize your experience, update details, and adjust preferences easily.
                   </p>
                   <div className="flex items-center text-gray-600 font-medium">
                     <span>Open Settings</span>
@@ -377,9 +376,9 @@ const HomePage = () => {
       <section id="about" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Complete Learning Platform</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Your All-in-One AI Learning Platform</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to accelerate your learning journey and achieve your professional goals.
+              Equip yourself with tools for effective skill development, from personalized plans to advanced AI insights.
             </p>
           </div>
 
@@ -396,7 +395,7 @@ const HomePage = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                Track your learning progress with comprehensive analytics and performance insights.
+                Monitor your skill development with detailed analytics and actionable insights.
               </p>
             </div>
 
@@ -411,7 +410,7 @@ const HomePage = () => {
                   <p className="text-gray-500 text-sm">Notes & Goals</p>
                 </div>
               </div>
-              <p className="text-gray-600">Organize your learning materials and track personal learning objectives.</p>
+              <p className="text-gray-600">Centralize your resources and objectives for streamlined learning.</p>
             </div>
 
             {/* AI Technology */}
@@ -426,7 +425,7 @@ const HomePage = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                Powered by the latest AI models including GPT-4o for premium learning experiences.
+                Leverage cutting-edge AI, including GPT-4o, for optimized learning experiences.
               </p>
             </div>
 
@@ -438,43 +437,11 @@ const HomePage = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900">Community</h3>
-                  <p className="text-gray-500 text-sm">10K+ Learners</p>
+                  <p className="text-gray-500 text-sm">Growing Network</p>
                 </div>
               </div>
               <p className="text-gray-600">
-                Join a thriving community of professionals advancing their careers through learning.
-              </p>
-            </div>
-
-            {/* Security */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="p-3 bg-gray-100 rounded-lg">
-                  <Shield className="w-6 h-6 text-gray-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">Secure Platform</h3>
-                  <p className="text-gray-500 text-sm">Enterprise Grade</p>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                Your data is protected with enterprise-grade security and privacy measures.
-              </p>
-            </div>
-
-            {/* 24/7 Support */}
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="p-3 bg-orange-100 rounded-lg">
-                  <Clock className="w-6 h-6 text-orange-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">24/7 Support</h3>
-                  <p className="text-gray-500 text-sm">Always Available</p>
-                </div>
-              </div>
-              <p className="text-gray-600">
-                Get help whenever you need it with our round-the-clock AI-powered support system.
+                Connect with like-minded learners focused on professional growth.
               </p>
             </div>
           </div>
@@ -486,9 +453,9 @@ const HomePage = () => {
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           {!user ? (
             <>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to Transform Your Learning?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Ready to Master New Skills with AI?</h2>
               <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-                Join thousands of professionals who are already advancing their careers with AI-powered education.
+                Experience personalized learning that fits your schedule and accelerates your professional development.
               </p>
 
               <div className="space-y-8">
@@ -496,18 +463,18 @@ const HomePage = () => {
                   <div className="grid md:grid-cols-3 gap-6 mb-8">
                     <div className="text-center">
                       <div className="text-4xl mb-4">🎁</div>
-                      <h3 className="text-lg font-semibold text-white mb-2">300 Free Credits</h3>
-                      <p className="text-blue-100 text-sm">Every month, automatically</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">Free Starter Credits</h3>
+                      <p className="text-blue-100 text-sm">Begin with resources to explore</p>
                     </div>
                     <div className="text-center">
                       <div className="text-4xl mb-4">⚡</div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Instant Access</h3>
-                      <p className="text-blue-100 text-sm">Start learning immediately</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">Quick Setup</h3>
+                      <p className="text-blue-100 text-sm">Get learning in minutes</p>
                     </div>
                     <div className="text-center">
                       <div className="text-4xl mb-4">🚫</div>
-                      <h3 className="text-lg font-semibold text-white mb-2">No Credit Card</h3>
-                      <p className="text-blue-100 text-sm">100% free to get started</p>
+                      <h3 className="text-lg font-semibold text-white mb-2">No Commitment</h3>
+                      <p className="text-blue-100 text-sm">Sign up without any obligations</p>
                     </div>
                   </div>
 
@@ -515,19 +482,19 @@ const HomePage = () => {
                     to="/register"
                     className="inline-flex items-center space-x-3 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
-                    <span>Start Your Free Trial</span>
+                    <span>Begin Free Trial</span>
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>
 
-                <p className="text-blue-200 font-medium">✨ Join 10,000+ learners already using QuotaSkill</p>
+                <p className="text-blue-200 font-medium">✨ Start your AI-powered skill journey today</p>
               </div>
             </>
           ) : (
             <>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Continue Your Learning Journey</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Advance Your Skills Further</h2>
               <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-                You're making great progress! Keep building your skills and achieving your goals.
+                Build on your progress with easy access to tools that support your ongoing development.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -535,7 +502,7 @@ const HomePage = () => {
                   to="/dashboard"
                   className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  <span>View Progress</span>
+                  <span>Check Progress</span>
                   <BarChart3 className="w-5 h-5" />
                 </Link>
 
@@ -543,7 +510,7 @@ const HomePage = () => {
                   to="/quiz"
                   className="inline-flex items-center space-x-2 border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300"
                 >
-                  <span>Take Quiz</span>
+                  <span>New Quiz</span>
                   <Brain className="w-5 h-5" />
                 </Link>
               </div>
@@ -572,8 +539,7 @@ const HomePage = () => {
                 <span className="text-2xl font-bold">QuotaSkill</span>
               </div>
               <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-                Empowering professionals worldwide with AI-powered learning solutions. Master new skills, advance your
-                career, and achieve your goals.
+                Your go-to platform for AI-powered personalized learning, helping you master skills and advance professionally.
               </p>
               <div className="flex space-x-4">
                 <a
@@ -584,7 +550,7 @@ const HomePage = () => {
                   aria-label="Follow QuotaSkill on Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-4.358-.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.013-3.663-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.057 1.69-.073 4.949-.073zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98-.059-1.28-.073-1.689-.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-14.4z" />
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.664-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0c-3.258 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                 </a>
                 <a
@@ -666,7 +632,7 @@ const HomePage = () => {
           {/* Bottom Bar */}
           <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 mb-4 md:mb-0">© 2025 QuotaSkill. All rights reserved.</p>
-            <p className="text-gray-500 text-sm">Empowering learning with artificial intelligence</p>
+            <p className="text-gray-500 text-sm">Empowering skill mastery through AI learning</p>
           </div>
         </div>
       </footer>
@@ -675,3 +641,5 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+
