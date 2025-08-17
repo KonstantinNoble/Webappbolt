@@ -199,7 +199,7 @@ const HomePage = () => {
             ) : (
               <>
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                  Welcome Back, <span className="text-transparent bg-clip-text animate-gradient">{user.email?.split("@")[0] || "Learner"}!</span>
+                  Welcome Back, <span className="text-blue-600 font-bold">{user.email?.split("@")[0] || "Learner"}!</span>
                 </h1>
 
                 <p className="text-xl text-gray-600 mb-12 leading-relaxed max-w-2xl mx-auto">
