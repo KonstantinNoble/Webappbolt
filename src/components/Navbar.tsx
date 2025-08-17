@@ -27,15 +27,19 @@ const Navbar = () => {
 
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // State to control the initial fade-in animation of the Navbar
+  const [isNavbarLoaded, setIsNavbarLoaded] = useState(false);
 
   const isActive = (path) => location.pathname === path;
 
-  // Fetch credits when the user is available
+  // Fetch credits when the user is available and trigger Navbar animation
   useEffect(() => {
     // Check if fetchCredits exists before calling it
     if (user && fetchCredits) {
       fetchCredits();
     }
+    // Set isNavbarLoaded to true after a short delay to trigger the animation
+    setTimeout(() => setIsNavbarLoaded(true), 100);
   }, [user, fetchCredits]);
 
 
@@ -96,12 +100,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100">
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100 transition-transform duration-300 ease-out ${isNavbarLoaded ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {/* Logo - slightly improved hover effect */}
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="relative p-2 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:from-blue-100 group-hover:to-indigo-100 transition-all duration-300">
+              <div className="relative p-2 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 group-hover:from-blue-100 group-hover:to-indigo-100 transition-all duration-300 transform group-hover:scale-105">
                 <div className="relative w-8 h-8">
                   <svg viewBox="0 0 100 100" className="w-full h-full">
                     <circle cx="40" cy="40" r="25" fill="none" stroke="#3B82F6" strokeWidth="4"/>
@@ -114,32 +118,36 @@ const Navbar = () => {
               <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
             </Link>
 
-            {/* Desktop-Navigationslinks entfernt, durch einen Homepage-Button ersetzt */}
+            {/* Desktop-Navigationslinks und Homepage-Button */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                Homepage
+              <Link 
+                to="/" 
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-700 bg-gray-100 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-md"
+              >
+                <Home className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
+                <span className="font-semibold transition-transform duration-200 group-hover:translate-x-1">Homepage</span>
               </Link>
             </div>
 
             {/* Right-side controls */}
             <div className="flex items-center space-x-4">
-              {/* Credits display */}
+              {/* Credits display with simple animation */}
               {user && (
-                <div className="flex items-center space-x-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div className="flex items-center space-x-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg animate-pulse-slow">
                   <Coins className="w-4 h-4 text-yellow-600" />
                   <span className="text-yellow-700 font-semibold text-sm">{credits}</span>
                 </div>
               )}
 
-              {/* Desktop authentication buttons */}
+              {/* Desktop authentication buttons with hover effects */}
               {!user && (
                 <div className="hidden md:flex items-center space-x-4">
-                  <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                  <Link to="/login" className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200">
                     Sign In
                   </Link>
                   <Link 
                     to="/register"
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md"
                   >
                     Get Started
                   </Link>
@@ -150,18 +158,18 @@ const Navbar = () => {
               {user && (
                 <Link 
                   to="/dashboard"
-                  className="hidden md:inline-flex bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="hidden md:inline-flex bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-sm hover:shadow-md"
                 >
                   Dashboard
                 </Link>
               )}
 
-              {/* Menu button */}
+              {/* Menu button with smooth hover */}
               <button
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg transition-all duration-300 font-medium"
+                className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg transition-all duration-300 font-medium group"
               >
-                <Menu className="w-5 h-5" />
+                <Menu className="w-5 h-5 transition-transform duration-200 group-hover:rotate-12" />
                 <span className="hidden sm:inline">Menu</span>
               </button>
             </div>
@@ -169,17 +177,17 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Sidebar overlay */}
+      {/* Sidebar overlay with fade-in */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 opacity-100" 
           onClick={closeSidebar} 
         />
       )}
 
-      {/* Improved sidebar */}
+      {/* Improved sidebar with smooth slide-in and fade-in */}
       <div 
-        className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white border-l border-gray-200 shadow-2xl z-50 transform transition-all duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}
       >
         <div className="p-6 h-full flex flex-col">
           {/* Sidebar header */}
@@ -187,51 +195,51 @@ const Navbar = () => {
             <Link to="/" onClick={closeSidebar}>
               <span className="text-2xl font-bold text-gray-900">QuotaSkill</span>
             </Link>
-            <button onClick={closeSidebar} className="text-gray-500 hover:text-gray-900">
+            <button onClick={closeSidebar} className="text-gray-500 hover:text-gray-900 transition-colors">
               <X className="w-6 h-6" />
             </button>
           </div>
 
-          {/* Sidebar navigation */}
+          {/* Sidebar navigation with subtle animations */}
           <div className="flex-1 mt-6 space-y-2">
             {navigationLinks.map((link) => (
               <Link 
                 key={link.href}
                 to={link.href} 
                 onClick={closeSidebar}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
+                className={`group flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
                   isActive(link.href)
                     ? `${link.activeColor} border ${link.activeColor.replace('bg-', 'border-')} font-semibold`
                     : `${link.color} font-medium`
                 }`}
               >
-                <link.icon className={`w-5 h-5 ${
+                <link.icon className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110 ${
                   isActive(link.href)
                     ? link.activeColor.replace('text-', '')
                     : link.color.replace('hover:bg-', '').replace('text-', '')
                 }`} />
-                <span>{link.name}</span>
+                <span className="transition-transform duration-200 group-hover:translate-x-1">{link.name}</span>
               </Link>
             ))}
 
-            {/* Additional links for unauthenticated users */}
+            {/* Additional links for unauthenticated users with animations */}
             {!user && (
               <>
                 <a 
                   href="#pricing"
                   onClick={closeSidebar}
-                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium"
+                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium group"
                 >
-                  <Coins className="w-5 h-5 text-gray-400" />
-                  <span>Pricing</span>
+                  <Coins className="w-5 h-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">Pricing</span>
                 </a>
                 <a
                   href="#about"
                   onClick={closeSidebar}
-                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium"
+                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium group"
                 >
-                  <Home className="w-5 h-5 text-gray-400" />
-                  <span>About</span>
+                  <Home className="w-5 h-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">About</span>
                 </a>
               </>
             )}
@@ -259,7 +267,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Sidebar footer */}
+          {/* Sidebar footer with simple hover animation on buttons */}
           <div className="mt-auto pt-6 border-t border-gray-200">
             {user ? (
               <div className="space-y-3">
