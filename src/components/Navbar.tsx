@@ -222,27 +222,7 @@ const Navbar = () => {
               </Link>
             ))}
 
-            {/* Additional links for unauthenticated users with animations */}
-            {!user && (
-              <>
-                <a 
-                  href="#pricing"
-                  onClick={closeSidebar}
-                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium group"
-                >
-                  <Coins className="w-5 h-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">Pricing</span>
-                </a>
-                <a
-                  href="#about"
-                  onClick={closeSidebar}
-                  className="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 font-medium group"
-                >
-                  <Home className="w-5 h-5 text-gray-400 transition-transform duration-200 group-hover:scale-110" />
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">About</span>
-                </a>
-              </>
-            )}
+       
 
             {/* User profile section if logged in */}
             {user && (
