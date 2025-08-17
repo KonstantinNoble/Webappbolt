@@ -157,10 +157,10 @@ const HomePage = () => {
           <div className={`text-center max-w-4xl mx-auto ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
             {!user ? (
               <>
-                <div className="relative">
+                <div className="relative z-30">
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
                     Build Essential Skills with
-                    <span className="text-transparent bg-clip-text animate-gradient block">AI-Powered Personalized Learning</span>
+                    <span className="text-blue-600 block font-bold">AI-Powered Personalized Learning</span>
                   </h1>
                   
                   {/* Sparkle effects around the title */}
